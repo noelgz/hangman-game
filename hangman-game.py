@@ -1,21 +1,39 @@
 import random
 
+def random_word():
+  with open("./data.txt", "r", encoding="utf-8") as f:
+    allText = f.read()
+    selectedWord = random.choice(allText.split())
+
+  return selectedWord 
+
 def match_letter(letter_entered, word):
   idx_from_word = []
   for idx, letter in enumerate(word):
     if letter == letter_entered:
       idx_from_word.append(idx)
-  
-  print("Word: " + word + " - Indices que matchean: " +  str(idx_from_word))
-  
+
+  return idx_from_word
+
+def draw_underscore_of_word(word):
+  lengthWord = len(word)
+  undescoreWord = []
+  for i in range(1,lengthWord):
+    undescoreWord.append("_")
+
+  return undescoreWord
+
 
 def run():
-  letter = input("Ingrese una letra: ")
+  selectedWord = random_word()
+  underscore = ""
+  for i in range(1, len(selectedWord) + 1):
+      underscore = underscore + "_ "
+    
+  print(selectedWord)
+  print(underscore)
 
-  with open("./data.txt", "r", encoding="utf-8") as f:
-    allText = f.read()
-    selectedWord = random.choice(allText.split())
-    match_letter(letter, selectedWord)
+  #letter = input("Ingrese una letra: ")
 
 
 if __name__ == "__main__":
