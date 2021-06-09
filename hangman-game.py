@@ -1,4 +1,5 @@
 import random
+import os
 
 def random_word():
   with open("./data.txt", "r", encoding="utf-8") as f:
@@ -15,25 +16,23 @@ def match_letter(letter_entered, word):
 
   return idx_from_word
 
-def draw_underscore_of_word(word):
-  lengthWord = len(word)
-  undescoreWord = []
-  for i in range(1,lengthWord):
-    undescoreWord.append("_")
-
-  return undescoreWord
-
+def clear_screen():
+  if os.name == "nt":
+    os.system("cls")
+  else:
+    os.system("clear")
 
 def run():
+  clear_screen()
+  print("¡ Adivina la palabra !")
+
   selectedWord = random_word()
   underscore = ""
   for i in range(1, len(selectedWord) + 1):
       underscore = underscore + "_ "
-    
-  print(selectedWord)
+  
   print(underscore)
-
-  #letter = input("Ingrese una letra: ")
+  letter = input("\nIngrese una letra: ")
 
 
 if __name__ == "__main__":
