@@ -3,6 +3,8 @@ import random
 import unicodedata
 
 def clear_screen():
+  """ Clear the terminal screen """
+  
   if os.name == "nt":
     os.system("cls")
   else:
@@ -48,6 +50,8 @@ class HangmanGame:
   
 
   def _match_letter(self):
+    """ Finds if the letter is within the selected word """
+
     input_letter = self._input_letter()
     for idx,letter in enumerate(self.selectedWord):
       if unicodedata.normalize('NFKD', letter.upper()).encode('ASCII', 'ignore') == unicodedata.normalize('NFKD', input_letter).encode('ASCII', 'ignore'):
@@ -57,6 +61,8 @@ class HangmanGame:
 
 
   def _input_letter(self):
+    """ User input data """
+
     inputLetter = input("\n\nIngrese una letra: ")
 
     return inputLetter.upper()
@@ -64,5 +70,5 @@ class HangmanGame:
 
 if __name__ == "__main__":
   game = HangmanGame()
-  
+
 
