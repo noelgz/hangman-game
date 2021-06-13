@@ -13,14 +13,21 @@ class HangmanGame:
 
   def __init__(self):
     self.selected_word = ""
+    self.complete_word = []
 
     self._load_word()
 
   def _load_word(self):
+    """ Select a word from the .txt file to play """
+
     with open ("./data.txt", "r", encoding="utf-8") as f:
       allText = f.read()
       self.selectedWord = random.choice(allText.split())
-      print(self.selectedWord)
+  
+  def draw_scenes(self):
+    """ Draw and refresh scenes of the game """
+    pass
+
 
 
 if __name__ == "__main__":
